@@ -2,7 +2,7 @@
 
 Causal manipulation of neural ODEs (via model parameters or external inputs) to achieve performance guarantees, such as safety 
 
-![pipeline](imgs/obs_walker_invariance.mp4) 
+<video src='imgs/obs_walker_invariance.mp4' width=180/>
 
 There are four simple modelling demos using neural ODEs with performance specifications (spiral curve regression, convexity portrait, Mujoco, and end-to-end lidar-based autonomous driving).
 
