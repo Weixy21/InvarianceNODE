@@ -196,7 +196,7 @@ class ODEFunc(nn.Module):
                 sensor = torch.cat([x, self.ego[:,:,2:4]], dim = 2)  # add theta and speed
             else:
                 sensor = torch.cat([self.lidar, self.ego[:,:,2:4]], dim = 2)
-            out = torch.cat([(u1*sensor).sum(axis = 2).unsqueeze(2), (u2*sensor).sum(axis = 2).unsqueeze(2)], dim = 2) + g[:,:,0:2]
+            out = torch.cat([(u1*sensor).sum(axis = 2).unsqueeze(2), (u2*sensor).sum(axis = 2).unsqueeze(2)], dim = 2) + g[:,:,0:2]  #\dot x = g1(x) + g2(x)u
         else:
             if args.use_fc == True:
                 x = self._fc(self.lidar)
@@ -207,7 +207,7 @@ class ODEFunc(nn.Module):
                 sensor = torch.cat([x, self.ego[:,2:4]], dim = 1)  # add theta and speed
             else:
                 sensor = torch.cat([self.lidar, self.ego[:,2:4]], dim = 1)
-            out = torch.cat([(u1*sensor).sum(axis = 1).unsqueeze(1), (u2*sensor).sum(axis = 1).unsqueeze(1)], dim = 1) + g[:,0:2]
+            out = torch.cat([(u1*sensor).sum(axis = 1).unsqueeze(1), (u2*sensor).sum(axis = 1).unsqueeze(1)], dim = 1) + g[:,0:2]   #\dot x = g1(x) + g2(x)u
             
         return out
 
